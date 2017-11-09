@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/v1/sponsor")
 public class SponsorController {
 
-    final
-    SponsorService sponsorService;
+    private final SponsorService sponsorService;
 
     @Autowired
     public SponsorController(SponsorService sponsorService) {
@@ -31,16 +30,10 @@ public class SponsorController {
                           @RequestParam(value = "state", required = false) String state,
                           @RequestParam(value = "zip", required = false) Integer zip) {
 
-        System.out.println(name);
-        System.out.println(description);
-        System.out.println(city);
-        System.out.println(street);
 
         Address address = new Address(city,street , state, zip);
-
-        System.out.print(address.getState());
-
         Sponsor sponsor = new Sponsor(name, description, address);
+
         return sponsorService.create(sponsor);
     }
 
@@ -49,8 +42,16 @@ public class SponsorController {
     public Sponsor get(@PathVariable(value = "id") Long id){
 
         Sponsor sponsor = sponsorService.get(id);
-        System.out.println("Sponsor Name:"+sponsor.getName());
         return sponsor;
     }
 
+    @PutMapping(value = "/{id}")
+    public Sponsor update(){
+        return null;
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public Sponsor delete(){
+        return null;
+    }
 }

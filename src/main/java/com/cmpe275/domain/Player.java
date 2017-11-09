@@ -1,6 +1,5 @@
 package com.cmpe275.domain;
 
-import com.cmpe275.service.SponsorService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;

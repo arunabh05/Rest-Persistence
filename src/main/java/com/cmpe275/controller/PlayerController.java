@@ -39,18 +39,27 @@ public class PlayerController {
                          @RequestParam(value = "zip", required = false) Integer zip,
                          @RequestParam(value = "sponsor", required = false) Long sponsorId) {
 
-        System.out.println(firstname);
-        System.out.println(lastname);
-        System.out.println(email);
-        System.out.println(description);
-        System.out.println(sponsorId);
-
         Address address = new Address(city,street,state,zip);
-
         Sponsor sponsor = sponsorService.get(sponsorId);
-        System.out.println("Sponsor Name:"+sponsor.getName());
-
         Player player = new Player(firstname, lastname, email, description, address ,sponsorId, sponsor);
+
         return playerService.create(player);
+    }
+
+    @GetMapping(value = "/{id}")
+    public Player get(@PathVariable(value = "id") Long id){
+
+        Player player = playerService.get(id);
+        return player;
+    }
+
+    @PutMapping(value = "/{id}")
+    public Player update(){
+        return null;
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public Player delete(){
+        return null;
     }
 }
