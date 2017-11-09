@@ -7,12 +7,17 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by arunabh.shrivastava on 11/8/2017.
+ *
  */
 @Service
 public class SponsorServiceImpl implements SponsorService{
 
+    private final SponsorRepository sponsorRepository;
+
     @Autowired
-    SponsorRepository sponsorRepository;
+    public SponsorServiceImpl(SponsorRepository sponsorRepository) {
+        this.sponsorRepository = sponsorRepository;
+    }
 
     @Override
     public Sponsor get(Long sponsorId){

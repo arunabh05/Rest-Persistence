@@ -4,6 +4,7 @@ import com.cmpe275.domain.Sponsor;
 
 /**
  * Created by arunabh.shrivastava on 11/9/2017.
+ *
  */
 public interface SponsorService {
 

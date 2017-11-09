@@ -7,12 +7,17 @@ import org.springframework.stereotype.Service;
 
 /**
  * Created by arunabh.shrivastava on 11/8/2017.
+ *
  */
 @Service
 public class PlayerServiceImpl implements PlayerService{
 
+    private final PlayerRepository playerRepository;
+
     @Autowired
-    PlayerRepository playerRepository;
+    public PlayerServiceImpl(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
 
     @Override
     public Player create(Player player){

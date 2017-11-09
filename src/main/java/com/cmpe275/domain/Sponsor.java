@@ -1,9 +1,11 @@
 package com.cmpe275.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by arunabh.shrivastava on 11/8/2017.
+ *
  */
 
 @Entity
@@ -13,9 +15,9 @@ public class Sponsor {
     @Id
     @GeneratedValue
     private long id;
+    @NotNull
     private String name;
     private String description;
-
     @Embedded
     private Address address;
 
