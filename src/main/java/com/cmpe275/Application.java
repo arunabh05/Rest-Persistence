@@ -2,11 +2,11 @@ package com.cmpe275;
 
 /**
  * Created by arunabh.shrivastava on 11/8/2017.
+ *
  */
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication

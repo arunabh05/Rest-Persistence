@@ -8,26 +8,13 @@ import javax.validation.constraints.NotNull;
  *
  */
 
+import lombok.Data;
+import lombok.ToString;
+
+
 @Entity
 @Table(name = "SPONSOR")
 public class Sponsor {
-
-    @Id
-    @GeneratedValue
-    private long id;
-    @NotNull
-    private String name;
-    private String description;
-    @Embedded
-    private Address address;
-
-    public Sponsor(){}
-
-    public Sponsor(String name, String description, Address address) {
-        this.name = name;
-        this.description = description;
-        this.address = address;
-    }
 
     public long getId() {
         return id;
@@ -58,6 +45,30 @@ public class Sponsor {
     }
 
     public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Id
+    @GeneratedValue
+    private long id;
+    @NotNull
+    private String name;
+    private String description;
+    @Embedded
+    private Address address;
+
+    public Sponsor(){}
+
+    public Sponsor(String name, String description, Address address) {
+        this.name = name;
+        this.description = description;
+        this.address = address;
+    }
+
+    public Sponsor(Long id, String name, String description, Address address) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
         this.address = address;
     }
 }

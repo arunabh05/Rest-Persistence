@@ -8,6 +8,6 @@ import com.cmpe275.domain.Player;
  */
 public interface OpponentService {
 
-    String add(Player player1, Player player2);
-    String remove(Player player1, Player player2);
+    void add(Player player1, Player player2);
+    void remove(Player player1, Player player2);
 }

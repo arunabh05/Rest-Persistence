@@ -1,5 +1,8 @@
 package com.cmpe275.domain;
 
+import lombok.Data;
+import lombok.ToString;
+
 import javax.persistence.Embeddable;
 
 /**
@@ -11,19 +14,10 @@ public class Address {
 
     private String city;
     private String street;
-    private String state;
-    private Integer zip;
 
-    public Address(){}
-
-    public Address(String city, String street, String state, Integer zip) {
-        this.city = city;
-        this.street = street;
-        this.state = state;
-        this.zip = zip;
+    public String getCity() {
+        return city;
     }
-
-    public String getCity() { return city; }
 
     public void setCity(String city) {
         this.city = city;
@@ -52,4 +46,17 @@ public class Address {
     public void setZip(Integer zip) {
         this.zip = zip;
     }
+
+    private String state;
+    private Integer zip;
+
+    public Address(){}
+
+    public Address(String city, String street, String state, Integer zip) {
+        this.city = city;
+        this.street = street;
+        this.state = state;
+        this.zip = zip;
+    }
+
 }

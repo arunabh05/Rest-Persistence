@@ -1,6 +1,7 @@
 package com.cmpe275.service;
 
 import com.cmpe275.domain.Sponsor;
+import com.cmpe275.exceptions.ResourceNotFoundException;
 import com.cmpe275.repository.SponsorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,12 +27,18 @@ public class SponsorServiceImpl implements SponsorService{
 
     @Override
     public Sponsor delete(Long sponsorId) {
-        return null;
+
+        Sponsor sponsor = sponsorRepository.findOne(sponsorId);
+        if(sponsor == null){
+            throw new ResourceNotFoundException("Sponsor not found");
+        }
+        sponsorRepository.delete(sponsorId);
+        return sponsor;
     }
 
     @Override
     public Sponsor update(Sponsor sponsor) {
-        return null;
+        return sponsorRepository.save(sponsor);
     }
 
     @Override

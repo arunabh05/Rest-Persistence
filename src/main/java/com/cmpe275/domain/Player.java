@@ -18,6 +18,7 @@ public class Player {
 
     @Id
     @GeneratedValue
+    @Column(name = "PLAYER_ID")
     private long id;
     @NotNull
     private String firstname;
@@ -30,15 +31,13 @@ public class Player {
     private Address address;
     @OneToOne(cascade = CascadeType.ALL)
     private Sponsor sponsor;
-    @ManyToOne
-    private Player player;
-    @OneToMany(mappedBy = "player")
-    private List<Player> opponentList;
+    @OneToMany(mappedBy = "player", fetch = FetchType.EAGER)
+    private List<Opponents> opponents;
 
     public Player(){}
 
     @Autowired
-    public Player(String firstname, String lastname, String email, String description, Address address, Long sponsorId, Sponsor sponsor){
+    public Player(String firstname, String lastname, String email, String description, Address address, Sponsor sponsor){
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -47,7 +46,29 @@ public class Player {
         this.sponsor = sponsor;
     }
 
-    public long getId() { return id; }
+    @Autowired
+    public Player(Long playerId, String firstname, String lastname, String email, String description, Address address, Sponsor sponsor){
+        this.id = playerId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.description = description;
+        this.address = address;
+        this.sponsor = sponsor;
+    }
+
+    public void addOpponent(Opponents opponent){
+        opponents.add(opponent);
+    }
+
+    public void removeOpponent(Opponents opponent){
+        opponents.remove(opponent);
+    }
+
+
+    public long getId() {
+        return id;
+    }
 
     public void setId(long id) {
         this.id = id;
@@ -55,14 +76,6 @@ public class Player {
 
     public String getFirstname() {
         return firstname;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public void setFirstname(String firstname) {
@@ -93,6 +106,14 @@ public class Player {
         this.description = description;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
     public Sponsor getSponsor() {
         return sponsor;
     }
@@ -101,11 +122,11 @@ public class Player {
         this.sponsor = sponsor;
     }
 
-    public List<Player> getOpponentList() {
-        return opponentList;
+    public List<Opponents> getOpponents() {
+        return opponents;
     }
 
-    public void setOpponentList(List<Player> opponentList) {
-        this.opponentList = opponentList;
+    public void setOpponents(List<Opponents> opponents) {
+        this.opponents = opponents;
     }
 }
