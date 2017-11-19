@@ -1,57 +1,35 @@
 package com.cmpe275.domain;
 
 import lombok.Data;
-import lombok.ToString;
 
 import javax.persistence.Embeddable;
 
 /**
  * Created by arunabh.shrivastava on 11/8/2017.
  *
+ * Address class to store players and opponents address.
  */
 @Embeddable
 public class Address {
 
     private String city;
     private String street;
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public Integer getZip() {
-        return zip;
-    }
-
-    public void setZip(Integer zip) {
-        this.zip = zip;
-    }
-
     private String state;
     private Integer zip;
 
+    /**
+     * Instantiates a new Address.
+     */
     public Address(){}
 
+    /**
+     * Instantiates a new Address.
+     *
+     * @param city      city name
+     * @param state     state name
+     * @param street    street number and name
+     * @param zip       zip code
+     */
     public Address(String city, String street, String state, Integer zip) {
         this.city = city;
         this.street = street;
@@ -59,4 +37,75 @@ public class Address {
         this.zip = zip;
     }
 
+    /**
+     * Gets city name.
+     *
+     * @return city the city name
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * Sets the city name
+     *
+     * @param city the city name
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * Gets street number and name
+     *
+     * @return street the street number and name
+     */
+    public String getStreet() {
+        return street;
+    }
+
+    /**
+     * Sets the street number and name
+     *
+     * @param street the street number and name
+     */
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    /**
+     * Gets state name
+     *
+     * @return state the state name
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * Sets the state name
+     *
+     * @param state the state name
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
+     * Gets the zip code address
+     *
+     * @return zip the zip code address
+     */
+    public Integer getZip() {
+        return zip;
+    }
+
+    /**
+     * Sets the zip code
+     *
+     * @param zip the zip code address
+     */
+    public void setZip(Integer zip) {
+        this.zip = zip;
+    }
 }

@@ -1,7 +1,6 @@
 package com.cmpe275.service;
 
 import com.cmpe275.domain.Player;
-import com.cmpe275.exceptions.ResourceNotFoundException;
 import com.cmpe275.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,12 +34,7 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     public Player delete(Long playerId) {
-
         Player player = playerRepository.findOne(playerId);
-        if(player == null){
-            throw new ResourceNotFoundException("Player not found");
-        }
-
         playerRepository.delete(playerId);
         return player;
     }
