@@ -6,15 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
+ * The type Sponsor service.
  *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  */
-
 @Service
 public class SponsorServiceImpl implements SponsorService{
 
     private final SponsorRepository sponsorRepository;
 
+    /**
+     * Instantiates a new Sponsor service.
+     *
+     * @param sponsorRepository the sponsor repository
+     */
     @Autowired
     public SponsorServiceImpl(SponsorRepository sponsorRepository) {
         this.sponsorRepository = sponsorRepository;

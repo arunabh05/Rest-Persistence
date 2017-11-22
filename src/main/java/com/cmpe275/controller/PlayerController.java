@@ -3,7 +3,9 @@ package com.cmpe275.controller;
 import com.cmpe275.domain.Address;
 import com.cmpe275.domain.Player;
 import com.cmpe275.domain.Sponsor;
+import com.cmpe275.repository.PlayerRepository;
 import com.cmpe275.service.PlayerService;
+import com.cmpe275.service.PlayerServiceImpl;
 import com.cmpe275.service.SponsorService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ *  Player Controller to perform CRUD operations on {@link Player}.
  *
- * Created by arunabh.shrivastava on 11/8/2017.
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  *
- * Player Controller to perform CRUD operations on Player
+ * @see Player
+ * @see PlayerService
+ * @see PlayerServiceImpl
+ * @see PlayerRepository
  */
-
-
 @RestController
 @Api(value = "Player management endpoint", description = "This API performs CRUD operations on Players.")
 @RequestMapping(value = "/player")
@@ -87,7 +92,7 @@ public class PlayerController {
         if(player == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<Object>(player, HttpStatus.OK);
+        return new ResponseEntity<>(player, HttpStatus.OK);
     }
 
     /**

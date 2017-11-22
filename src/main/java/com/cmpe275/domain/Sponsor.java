@@ -1,13 +1,16 @@
 package com.cmpe275.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
- *
  * Sponsor class to manage sponsor details and address.
+ *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  */
 @Entity
 @Table(name = "SPONSOR")
@@ -22,16 +25,17 @@ public class Sponsor {
     @Embedded
     private Address address;
     @OneToMany(mappedBy = "sponsor")
+    @JsonBackReference
     private List<Player> playerList;
 
     /**
-     * Instantiates a new Sponsor
+     * Instantiates a new Sponsor. No Args Constructor.
      *
      */
     public Sponsor(){}
 
     /**
-     * Instantiates a new Sponsor
+     * Instantiates a new Sponsor.
      *
      * @param name          Name of the sponsor
      * @param description   Description of the sponsor
@@ -44,7 +48,7 @@ public class Sponsor {
     }
 
     /**
-     * Instantiates a new Sponsor
+     * Instantiates a new Sponsor. Constructor with SponsorId
      *
      * @param id            Id of the sponsor
      * @param name          Name of the sponsor

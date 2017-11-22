@@ -6,15 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by arunabh.shrivastava on 11/16/2017.
+ * Implementation of {@link OpponentService} interface.
  *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  */
-
 @Service
 public class OpponentServiceImpl implements OpponentService {
 
     private final PlayerRepository playerRepository;
 
+    /**
+     * Instantiates a new Opponent Service.
+     *
+     * @param playerRepository the player repository
+     *
+     */
     @Autowired
     public OpponentServiceImpl(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;

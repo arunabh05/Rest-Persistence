@@ -6,14 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
+ * The type Player service.
  *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  */
 @Service
 public class PlayerServiceImpl implements PlayerService{
 
     private final PlayerRepository playerRepository;
 
+    /**
+     * Instantiates a new Player Service.
+     *
+     * @param playerRepository the player repository
+     */
     @Autowired
     public PlayerServiceImpl(PlayerRepository playerRepository) {
         this.playerRepository = playerRepository;
@@ -21,7 +28,11 @@ public class PlayerServiceImpl implements PlayerService{
 
     @Override
     public Player create(Player player){
-        return playerRepository.save(player);
+
+        if(playerRepository.findPlayerByEmail(player.getEmail()) == null){
+               return playerRepository.save(player);
+        }
+        return null;
     }
 
     @Override
@@ -38,5 +49,4 @@ public class PlayerServiceImpl implements PlayerService{
         playerRepository.delete(playerId);
         return player;
     }
-
 }

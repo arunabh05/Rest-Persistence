@@ -4,9 +4,12 @@ import com.cmpe275.domain.Player;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
- *
  * PlayerRepository to perform CRUD opertions on {@link Player} in database.
+ *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  */
 public interface PlayerRepository extends CrudRepository<Player, Long> {
+
+    public Player findPlayerByEmail(String email);
 }

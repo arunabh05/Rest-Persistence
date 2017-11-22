@@ -4,13 +4,30 @@ import com.cmpe275.domain.Player;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by arunabh.shrivastava on 11/9/2017.
+ * The interface Opponent service.
  *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
  */
 public interface OpponentService {
 
+    /**
+     * Adds opponent relation between Player1 and Player2.
+     *
+     * @param player1 the player 1
+     * @param player2 the player 2
+     * @return responseMessage
+     */
     @Transactional
     String add(Player player1, Player player2);
+
+    /**
+     * Removes opponent relation between Player1 and Player2.
+     *
+     * @param player1 the player 1
+     * @param player2 the player 2
+     * @return responseMessage
+     */
     @Transactional
     String remove(Player player1, Player player2);
 }

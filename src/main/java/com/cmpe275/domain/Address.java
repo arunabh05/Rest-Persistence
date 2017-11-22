@@ -1,13 +1,15 @@
 package com.cmpe275.domain;
 
-import lombok.Data;
-
 import javax.persistence.Embeddable;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
- *
  * Address class to store players and opponents address.
+ *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
+ *
+ * @see Player
+ * @see Sponsor
  */
 @Embeddable
 public class Address {

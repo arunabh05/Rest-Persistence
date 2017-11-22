@@ -1,18 +1,28 @@
 package com.cmpe275.domain;
 
+import com.cmpe275.controller.PlayerController;
+import com.cmpe275.service.PlayerService;
 import com.fasterxml.jackson.annotation.*;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
- *
  * Player class to manage player details, sponsors and opponents.
+ *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
+ *
+ * @see PlayerController
+ * @see PlayerService
  */
+@EqualsAndHashCode
 @Entity
 @Table(name = "PLAYER")
 public class Player {
@@ -31,9 +41,10 @@ public class Player {
     @Embedded
     private Address address;
     @ManyToOne(cascade = CascadeType.DETACH)
+    @JsonManagedReference
     private Sponsor sponsor;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE } )
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JoinTable( name = "opponents", joinColumns = @JoinColumn( name = "player_id"),
             inverseJoinColumns = @JoinColumn(name = "opponent_id"))
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
@@ -99,6 +110,7 @@ public class Player {
             itr.remove();
         }
     }
+
 
     /**
      * Adds a new opponent to the player's opponent list

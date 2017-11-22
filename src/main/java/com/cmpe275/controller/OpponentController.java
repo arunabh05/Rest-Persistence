@@ -2,6 +2,7 @@ package com.cmpe275.controller;
 
 import com.cmpe275.domain.Player;
 import com.cmpe275.service.OpponentService;
+import com.cmpe275.service.OpponentServiceImpl;
 import com.cmpe275.service.PlayerService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by arunabh.shrivastava on 11/9/2017.
- *
  * Opponent Controller to add or remove {@link Player} opponents.
+ *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
+ *
+ * @see Player
+ * @see OpponentService
+ * @see OpponentServiceImpl
  */
-
-
 @RestController
 @Api(value = "Opponent management endpoint", description = "This API performs add and remove operations on Players to manage opponents.")
 @RequestMapping(value = "/opponents")
@@ -54,7 +58,11 @@ public class OpponentController {
         if(player1 == null || player2 == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Object>(opponentService.add(player1, player2), HttpStatus.OK);
+
+        if(!player1.getOpponents().contains(player2) && !player2.getOpponents().contains(player1)){
+            return new ResponseEntity<Object>(opponentService.add(player1, player2), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(player1.getEmail() + " and " + player2 + " are already opponents",HttpStatus.OK);
     }
 
     /**
@@ -75,6 +83,10 @@ public class OpponentController {
         if(player1 == null || player2 == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Object>(opponentService.remove(player1, player2), HttpStatus.OK);
+
+        if(player1.getOpponents().contains(player2) && player2.getOpponents().contains(player1)){
+            return new ResponseEntity<Object>(opponentService.remove(player1, player2), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(player1.getEmail() + " and " + player2 + " are not opponents",HttpStatus.OK);
     }
 }

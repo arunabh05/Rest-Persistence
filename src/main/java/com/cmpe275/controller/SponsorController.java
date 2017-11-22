@@ -2,7 +2,11 @@ package com.cmpe275.controller;
 
 import com.cmpe275.domain.Address;
 import com.cmpe275.domain.Sponsor;
+import com.cmpe275.repository.PlayerRepository;
+import com.cmpe275.repository.SponsorRepository;
+import com.cmpe275.service.PlayerServiceImpl;
 import com.cmpe275.service.SponsorService;
+import com.cmpe275.service.SponsorServiceImpl;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,11 +14,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Created by arunabh.shrivastava on 11/8/2017.
  *
- * SponsorController to perform CRUD opertions on {@link Sponsor}
+ * Sponsor Controller to perform CRUD operations on {@link Sponsor}.
+ *
+ * @author arunabh.shrivastava
+ * @author sagar.mane
+ *
+ * @see Sponsor
+ * @see SponsorService
+ * @see SponsorServiceImpl
+ * @see SponsorRepository
+ *
  */
-
 @RestController
 @Api(value = "Sponsor management endpoint", description = "This API performs CRUD operations on Sponsoor.")
 @RequestMapping(value = "/sponsor")
