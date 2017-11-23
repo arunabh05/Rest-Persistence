@@ -103,7 +103,7 @@ public class SponsorController {
      * @return The updated {@link Sponsor} object on success, or HttpStatus.NOT_FOUND if sponsor doesn't exists or
      * HttpStatus.BAD_REQUEST on invalid request
      */
-    @PutMapping(value = "/{id}")
+    @PostMapping(value = "/{id}")
     public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestParam(value = "name") String name,
                           @RequestParam(value = "description", required = false) String description,
                           @RequestParam(value = "city", required = false) String city,

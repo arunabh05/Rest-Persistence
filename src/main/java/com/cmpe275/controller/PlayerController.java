@@ -129,7 +129,7 @@ public class PlayerController {
      * @return A {@link Player} object on success, or HttpStatus.NOT_FOUND if player doesn't exists or
      * HttpStatus.BAD_REQUEST on invalid request
      */
-    @PutMapping(value = "/{id}")
+    @PostMapping(value = "/{id}")
     public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestParam(value = "firstname") String firstname,
                          @RequestParam(value = "lastname") String lastname, @RequestParam(value = "email") String email,
                          @RequestParam(value = "description", required = false) String description,
